@@ -1,15 +1,8 @@
-Source: vanosilla
-Section: utils
-Priority: optional
-Maintainer: Wallcroft <wallcroft.uk.sas@gmail.com>
-Build-Depends: debhelper (>= 10)
-Standards-Version: 4.1.2
-Homepage: https://github.com/WallcroftUK/vanosilla
-#Vcs-Git: https://anonscm.debian.org/git/collab-maint/vanosilla.git
-#Vcs-Browser: https://anonscm.debian.org/cgit/collab-maint/vanosilla.git
-
 Package: vanosilla
-Architecture: any
+Version: 1.0
+Architecture: all
+Essential: no
+Priority: optional
 Depends: postgresql, mongodb-org, redis-server, mosquitto, dotnet-runtime-5.0, dotnet-sdk-5.0, ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Maintainer: Wallcroft
+Description: A sample package creating a shortcut that triggers a bash script opening a link to the official Ubuntu website
