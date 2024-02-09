@@ -1,6 +1,7 @@
-name: Build Debian Package
+name: Build Debian Package and Publish Release
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
@@ -20,8 +21,27 @@ jobs:
       - name: Build Debian package
         run: dpkg-deb --build vanosilla-linux
 
-      - name: Upload package artifact
-        uses: actions/upload-artifact@v2
+      - name: Get commit message
+        id: commit_message
+        run: echo "::set-output name=message::$(git log --format='%B' -n 1)"
+
+      - name: Create release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
         with:
-          name: vanosilla-deb
-          path: vanosilla-linux/*.deb
+          tag_name: ${{ github.sha }}
+          release_name: Release ${{ steps.commit_message.outputs.message }}
+          body: Describe the changes in this release.
+
+      - name: Upload package asset
+        id: upload-release-asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: vanosilla-linux/*.deb
+          asset_name: vanosilla-linux.deb
+          asset_content_type: application/octet-stream
