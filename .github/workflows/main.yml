@@ -1,4 +1,4 @@
-name: Build Debian Package and Publish Release
+name: Build Package
 
 on:
   workflow_dispatch:
