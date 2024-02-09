@@ -2,9 +2,11 @@ name: Build Debian Package and Publish Release
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
+    inputs:
+      release_name:
+        description: 'Release name'
+        required: true
+        default: 'Manual Release'
 
 jobs:
   build:
@@ -21,25 +23,25 @@ jobs:
       - name: Build Debian package
         run: dpkg-deb --build vanosilla-linux
 
-      - name: Get commit message
-        id: commit_message
-        run: echo "::set-output name=message::$(git log --format='%B' -n 1)"
+      - name: Extract version from control file
+        id: extract_version
+        run: echo "::set-output name=version::$(awk '/^Version:/ { print $2 }' vanosilla-linux/DEBIAN/control)"
 
       - name: Create release
         id: create_release
         uses: actions/create-release@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.sha }}
-          release_name: Release ${{ steps.commit_message.outputs.message }}
+          tag_name: ${{ steps.extract_version.outputs.version }}
+          release_name: ${{ github.event.inputs.release_name }}
           body: Describe the changes in this release.
 
       - name: Upload package asset
         id: upload-release-asset
         uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: vanosilla-linux/*.deb
