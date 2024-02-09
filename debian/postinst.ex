@@ -39,7 +39,7 @@ case "$1" in
 
         # Build the solution in the src folder
         echo "Building the solution in the src folder..."
-        cd /src && dotnet build
+        cd /opt/vanosilla && dotnet build .
     ;;
 
     # Handle other cases as needed
