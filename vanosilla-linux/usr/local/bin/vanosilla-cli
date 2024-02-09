@@ -1,0 +1,220 @@
+#!/bin/bash
+
+# Function to display ASCII art banner
+display_banner() {
+    clear
+    echo -e "
+____   ____                          .__.__  .__          
+\   \ /   /____    ____   ____  _____|__|  | |  | _____   
+ \   Y   /\__  \  /    \ /  _ \/  ___/  |  | |  | \__  \  
+  \     /  / __ \|   |  (  <_> )___ \|  |  |_|  |__/ __ \_
+   \___/  (____  /___|  /\____/____  >__|____/____(____  /
+               \/     \/           \/                  \/ 
+"
+}
+
+# Function to start the server
+start_server() {
+    echo "Starting whole server..."
+    # Add logic to start the server here
+}
+
+# Function to restart the server
+restart_server() {
+    echo "Restarting whole server..."
+    # Add logic to restart the server here
+}
+
+# Function to stop the server
+stop_server() {
+    echo "Stopping whole server..."
+    # Add logic to stop the server here
+}
+
+# Function to show live console of a specific channel
+show_live_console() {
+    channel_number=$1
+    echo "Showing live console of channel $channel_number..."
+    # Add logic to show live console here
+}
+
+# Main function to display menu options and handle user input
+main_menu() {
+    while true; do
+        display_banner
+        echo "Main Menu:"
+        echo "1. Manage Server"
+        echo "2. Manage Services"
+        echo "3. Update Server"
+        echo "4. Show Live Consoles"
+        echo "5. Exit"
+
+        read -p "Enter your choice: " choice
+
+        case $choice in
+            1)
+                server_menu
+                ;;
+            2)
+                service_menu
+                ;;
+            3)
+                update_menu
+                ;;
+            4)
+                live_console_menu
+                ;;
+            5)
+                echo "Exiting Vanosilla CLI. Goodbye!"
+                exit
+                ;;
+            *)
+                echo "Invalid option. Please try again."
+                ;;
+        esac
+    done
+}
+
+# Submenu to manage services
+update_menu() {
+    while true; do
+        display_banner
+        echo "Update Menu:"
+        echo "1. Build Server"
+        echo "2. Rebuild Server"
+        echo "3. Stop All"
+        echo "4. Back to Main Menu"
+
+        read -p "Enter your choice: " choice
+
+        case $choice in
+            1)
+                start_server
+                ;;
+            2)
+                restart_server
+                ;;
+            3)
+                stop_server
+                ;;
+            4)
+                break
+                ;;
+            *)
+                echo "Invalid option. Please try again."
+                ;;
+        esac
+    done
+}
+
+# Submenu to manage services
+service_menu() {
+    while true; do
+        display_banner
+        echo "Service Menu:"
+        echo "1. Start Server"
+        echo "2. Restart Server"
+        echo "3. Stop Server"
+        echo "4. Back to Main Menu"
+
+        read -p "Enter your choice: " choice
+
+        case $choice in
+            1)
+                start_server
+                ;;
+            2)
+                restart_server
+                ;;
+            3)
+                stop_server
+                ;;
+            4)
+                break
+                ;;
+            *)
+                echo "Invalid option. Please try again."
+                ;;
+        esac
+    done
+}
+
+# Submenu to manage server
+server_menu() {
+    while true; do
+        display_banner
+        echo "Server Menu:"
+        echo "1. Start Server"
+        echo "2. Restart Server"
+        echo "3. Stop Server"
+        echo "4. Back to Main Menu"
+
+        read -p "Enter your choice: " choice
+
+        case $choice in
+            1)
+                start_server
+                ;;
+            2)
+                restart_server
+                ;;
+            3)
+                stop_server
+                ;;
+            4)
+                break
+                ;;
+            *)
+                echo "Invalid option. Please try again."
+                ;;
+        esac
+    done
+}
+
+# Submenu to show live consoles
+live_console_menu() {
+    while true; do
+        display_banner
+        echo "Live Consoles Menu:"
+        echo "1. Channel 1"
+        echo "2. Channel 2"
+        echo "3. Channel 3"
+        echo "4. Channel 4"
+        echo "5. Channel 5"
+        echo "6. Channel 51"
+        echo "7. Back to Main Menu"
+
+        read -p "Enter your choice: " choice
+
+        case $choice in
+            1)
+                show_live_console 1
+                ;;
+            2)
+                show_live_console 2
+                ;;
+            3)
+                show_live_console 3
+                ;;
+            4)
+                show_live_console 3
+                ;;
+            5)
+                show_live_console 3
+                ;;
+            6)
+                show_live_console 3
+                ;;
+            7)
+                break
+                ;;
+            *)
+                echo "Invalid option. Please try again."
+                ;;
+        esac
+    done
+}
+
+# Call the main menu function to start the CLI tool
+main_menu
+
