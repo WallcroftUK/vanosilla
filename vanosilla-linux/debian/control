@@ -1,8 +1,0 @@
-Package: vanosilla
-Version: 1.0
-Architecture: amd64
-Essential: no
-Priority: optional
-Depends: postgresql, mongodb-org, redis-server, mosquitto, dotnet-runtime-5.0, dotnet-sdk-5.0, ${shlibs:Depends}, ${misc:Depends}
-Maintainer: Wallcroft
-Description: A sample package creating a shortcut that triggers a bash script opening a link to the official Ubuntu website
