@@ -1,10 +1,10 @@
 Document: vanosilla
 Title: Debian vanosilla Manual
-Author: <insert document author here>
+Author: Wallcroft
 Abstract: This manual describes what vanosilla is
  and how it can be used to
  manage online manuals on Debian systems.
-Section: unknown
+Section: utils
 
 Format: debiandoc-sgml
 Files: /usr/share/doc/vanosilla/vanosilla.sgml.gz

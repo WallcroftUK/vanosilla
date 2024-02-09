@@ -1,5 +1,5 @@
 Source: vanosilla
-Section: unknown
+Section: utils
 Priority: optional
 Maintainer: Wallcroft <wallcroft.uk.sas@gmail.com>
 Build-Depends: debhelper (>= 10)
