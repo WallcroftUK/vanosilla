@@ -1,0 +1,27 @@
+name: Build Debian Package
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build Package
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install build dependencies
+        run: sudo apt-get update && sudo apt-get install -y debhelper
+
+      - name: Build Debian package
+        run: dpkg-deb --build vanosilla-linux
+
+      - name: Upload package artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: vanosilla-deb
+          path: vanosilla-linux/*.deb
