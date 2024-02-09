@@ -1,5 +1,5 @@
 # Vanosilla
-[![Build](https://github.com/WallcroftUK/vanosilla/actions/workflows/main.yml/badge.svg)](https://github.com/WallcroftUK/vanosilla/actions/workflows/main.yml)
+[![Build](https://github.com/WallcroftUK/vanosilla/actions/workflows/build.yml/badge.svg)](https://github.com/WallcroftUK/vanosilla/actions/workflows/build.yml)
 
 ## Installation
 
