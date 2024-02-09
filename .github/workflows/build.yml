@@ -11,6 +11,10 @@ on:
         description: 'Tag name'
         required: true
         default: 'Manual Tag'
+      decs_name:
+        description: 'Description'
+        required: true
+        default: 'Description'
 
 jobs:
   build:
@@ -39,7 +43,7 @@ jobs:
         with:
           tag_name: ${{ github.event.inputs.tag_name }}
           release_name: ${{ github.event.inputs.release_name }}
-          body: Describe the changes in this release.
+          body: ${{ github.event.inputs.decs_name }}
 
       - name: Upload package asset
         id: upload-release-asset
